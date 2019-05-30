@@ -12,4 +12,5 @@ public interface PostRepository extends JpaRepository<Post, Long> {
      * @return список постов
      */
     List<Post> findAllByOrderByPostedAtDesc();
+    List<Post> findAllByParentPostIdOrderByPostedAtAsc(Long parentPostId);
 }

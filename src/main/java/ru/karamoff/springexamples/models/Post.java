@@ -1,13 +1,16 @@
 package ru.karamoff.springexamples.models;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 
@@ -17,11 +20,20 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.SEQUENCE) // создастся сиквенс в бд
     private Long id;
 
-    @Column(nullable = false, length = 280) // не null, макс длина 280
+    @Column(nullable = false, length = 64)
+    private String topic;
+
+    @Column(nullable = false, length = 2048) // не null, макс длина 280
     private String text;
 
-    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP") // по умолчанию будет текущие дата-время
     private LocalDateTime postedAt;
 
     private Long likes;
+
+    @ManyToOne
+    @JoinColumn(name = "parent_id", referencedColumnName = "id")
+    private Post parentPost;
+
+    @OneToMany(mappedBy = "parentPost")
+    private List<Post> answers;
 }

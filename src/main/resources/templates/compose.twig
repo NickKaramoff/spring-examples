@@ -1,0 +1,33 @@
+{% extends 'common/wrap.twig' %}
+
+{% block title %}Compose post{% endblock %}
+
+{% block content %}
+    <h1>Compose post
+
+    {% if parent != null %}
+        <small>(This is an answer to the post #{{ parent }})</small>
+    {% endif %}
+    </h1>
+
+    <form method="post" action="/compose">
+        <label for="topic">Topic:</label>
+        <input type="text" placeholder="Topic" name="topic" id="topic">
+
+        <br>
+        <br>
+
+        <label for="text">Text:</label>
+        <br>
+        <textarea name="text" id="text" cols="30" rows="10"></textarea>
+
+        <br>
+        <br>
+
+        {% if parent != null %}
+            <input type="hidden" name="parentPostId" value="{{ parent }}">
+        {% endif %}
+
+        <button type="submit">Send post!</button>
+    </form>
+{% endblock %}

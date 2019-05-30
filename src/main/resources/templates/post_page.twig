@@ -1,0 +1,26 @@
+{% extends 'common/wrap.twig' %}
+
+{% block title %}{{ post.topic }}{% endblock %}
+
+{% block content %}
+    <a href="/posts">Back to all posts</a>
+    <h1>{{ post.topic }}</h1>
+    <p>{{ post.text }}</p>
+    <p><small>{{ format('%1$tH:%1$tM:%1$tS %1$td.%1$tm.%1$tY', post.postedAt) }}</small></p>
+    <p><small>{{ post.likes }} people liked</small></p>
+
+    <h2>Answers</h2>
+    <ul>
+    {% for answer in post.answers %}
+        <li>
+            <div>
+                <h2><a href="/posts/{{ answer.id }}">{{ answer.topic }}</a></h2>
+                <h4><small>{{ format('%1$tH:%1$tM:%1$tS %1$td.%1$tm.%1$tY', answer.postedAt) }}</small></h4>
+                <p>{{ answer.text }}</p>
+                <p><small>{{ answer.likes }} people liked</small></p>
+                <p><small><a href="/compose/{{ answer.id }}">Reply</a></small></p>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

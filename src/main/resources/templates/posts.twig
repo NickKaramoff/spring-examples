@@ -1,0 +1,19 @@
+{% extends 'common/wrap.twig' %}
+
+{% block title %}Post list{% endblock %}
+
+{% block content %}
+    <h1>Posts</h1>
+
+    <ul>
+    {% for post in posts %}
+        <li>
+            <div>
+                <h4><small>{{ format('%1$tH:%1$tM:%1$tS %1$td.%1$tm.%1$tY', post.postedAt) }}</small></h4>
+                <p>{{ post.text }}</p>
+                <p><small>{{ post.likes }} people liked</small></p>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,4 +1,12 @@
 <div>
+    {% if not empty(post.parentPost) %}
+        <p>In reply to:</p>
+        <blockquote style="opacity: .5">
+            <h3><a href="/posts/{{ post.parentPost.id }}">{{ post.parentPost.topic }}</a></h3>
+            <p>{{ post.parentPost.text }}</p>
+        </blockquote>
+    {% endif %}
+
     <h2><a href="/posts/{{ post.id }}">{{ post.topic }}</a></h2>
     <h4><small>{{ format('%1$tH:%1$tM:%1$tS %1$td.%1$tm.%1$tY', post.postedAt) }}</small></h4>
     <p>{{ post.text }}</p>

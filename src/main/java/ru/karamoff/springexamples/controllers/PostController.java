@@ -29,4 +29,10 @@ public class PostController {
         map.addAttribute("post", post);
         return "post_page";
     }
+
+    @GetMapping("/posts/{postId}/like")
+    public String likePost(@PathVariable Long postId) {
+        postService.likePost(postId);
+        return "redirect:/posts/" + postId;
+    }
 }

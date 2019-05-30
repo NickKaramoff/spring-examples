@@ -8,6 +8,7 @@
     <p>{{ post.text }}</p>
     <p><small>{{ format('%1$tH:%1$tM:%1$tS %1$td.%1$tm.%1$tY', post.postedAt) }}</small></p>
     <p><small>{{ post.likes }} people liked</small></p>
+    <p><a href="/posts/{{ post.id }}/like">Like!</a></p>
 
     <h2>Answers</h2>
     <ul>

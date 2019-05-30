@@ -9,5 +9,5 @@ public interface PostService {
     Post getPost(Long postId);
     List<Post> getAllPosts();
     void createPost(PostForm form);
-    List<Post> getAllAnswers(Long postId);
+    void likePost(Long postId);
 }

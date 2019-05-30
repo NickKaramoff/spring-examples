@@ -43,7 +43,9 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<Post> getAllAnswers(Long postId) {
-        return postRepository.findAllByParentPostIdOrderByPostedAtAsc(postId);
+    public void likePost(Long postId) {
+        Post post = postRepository.getOne(postId);
+        post.setLikes(post.getLikes() + 1L);
+        postRepository.save(post);
     }
 }

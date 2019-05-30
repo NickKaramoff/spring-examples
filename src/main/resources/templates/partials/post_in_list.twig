@@ -1,0 +1,7 @@
+<div>
+    <h2><a href="/posts/{{ post.id }}">{{ post.topic }}</a></h2>
+    <h4><small>{{ format('%1$tH:%1$tM:%1$tS %1$td.%1$tm.%1$tY', post.postedAt) }}</small></h4>
+    <p>{{ post.text }}</p>
+    <p><small>{{ post.likes }} people liked</small></p>
+    <p><small><a href="/compose/{{ post.id }}">Reply</a></small></p>
+</div>
